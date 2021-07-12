@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gastos_tipos_prompt">Tipo de Gasto</string>
+
+    <string-array name="gastos_tipos_array">
+        <item>Informe o tipo do gasto</item>
+        <item>Combustível</item>
+        <item>Alimentação</item>
+        <item>Hospedagem</item>
+    </string-array>
+
+</resources>

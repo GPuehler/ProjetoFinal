@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:background="@color/teal_700"
+        android:padding="10dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="58dp"
+            android:minHeight="58dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:maxWidth="58dp"
+                android:maxHeight="58dp"
+                android:id="@+id/iv_TipoViagemIcon"
+                android:src="@drawable/praia_icon"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:background="@color/purple_200"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_Destino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Destino Teste" />
+
+            <TextView
+                android:id="@+id/tv_Chegada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chegada Teste" />
+
+            <TextView
+                android:id="@+id/tv_Partida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Partida Teste" />
+
+            <TextView
+                android:id="@+id/tv_TotalGasto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Gasto Teste" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
