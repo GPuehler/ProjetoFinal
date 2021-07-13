@@ -25,14 +25,27 @@ class MenuActivity : AppCompatActivity() {
 
     lateinit var viagemDAO : ViagemDAO
     lateinit var viagemAdapter: ViagemAdapter
+    lateinit var principalFragment: PrincipalFragment
+    lateinit var viagemFragment: ViagemFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        val user_id = intent.getIntExtra("user_id",0)
+        Log.i("Valor Menu: ", "${user_id}" )
+        val bundle = Bundle()
+        bundle.putInt("user", user_id)
+        Log.i("Valor Bundle: ", "${bundle}" )
+        // Resolve problema de ter que passar o id do usuário como parametro no construtor
+        principalFragment = PrincipalFragment()
+        viagemFragment = ViagemFragment()
+        principalFragment.arguments = bundle
+        viagemFragment.arguments = bundle
 
         supportFragmentManager
                 .beginTransaction()
-                .add(R.id.frame_principal, PrincipalFragment())
+                .add(R.id.frame_principal, principalFragment)
                 .commit()
 
 
@@ -45,17 +58,18 @@ class MenuActivity : AppCompatActivity() {
         viagemDAO = db.viagemDAO()
         viagemAdapter = ViagemAdapter()
         */
+
         val fabNovaViagem = findViewById<FloatingActionButton>(R.id.fabNovaViagem)
         val menuOptions = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val id_user : Int = intent.getIntExtra("user_id",1)
 
         fabNovaViagem.setOnClickListener {
-            createFragment(ViagemFragment(id_user))
+            createFragment(viagemFragment)
         }
 
         menuOptions.setOnNavigationItemReselectedListener {
             when(it.itemId){
-                R.id.ic_novaviagem -> createFragment(ViagemFragment(id_user))
+                R.id.ic_novaviagem -> createFragment(viagemFragment)
                 R.id.ic_home -> createFragment(PrincipalFragment())
                 R.id.ic_ajuda -> suplica("Não disponível ainda!")
             }
@@ -80,6 +94,7 @@ class MenuActivity : AppCompatActivity() {
         return true
     }
 
+    /*
     fun load(){
         GlobalScope.launch(Dispatchers.Main){
             val viagens = withContext(Dispatchers.IO){
@@ -88,6 +103,7 @@ class MenuActivity : AppCompatActivity() {
             viagemAdapter.items = viagens
         }
     }
+     */
 
     fun suplica(msg : String){
         Toast.makeText(this,"${msg}",Toast.LENGTH_SHORT).show()

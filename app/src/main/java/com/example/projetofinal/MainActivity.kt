@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         var etSenhaLogin = findViewById<EditText>(R.id.etSenhaLogin)
         var etEmailLogin = findViewById<EditText>(R.id.etEmailLogin)
 
+
         fun validaUser(email : String, senha : String){
             GlobalScope.launch(Dispatchers.Main){
                 val user = withContext(Dispatchers.IO){
@@ -62,4 +63,6 @@ class MainActivity : AppCompatActivity() {
             validaUser(etEmailLogin.text.toString(), etSenhaLogin.text.toString())
         }
     }
+
+
 }

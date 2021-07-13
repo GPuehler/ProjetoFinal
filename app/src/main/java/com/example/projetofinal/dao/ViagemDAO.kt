@@ -19,5 +19,8 @@ interface ViagemDAO {
     fun findAll(): List<Viagem>
 
     @Query("SELECT * FROM viagem WHERE id_user = :id_user ORDER BY dtChegada DESC")
-    fun findById(id_user: Int) : Viagem
+    fun findById(id_user: Int) : List<Viagem>
+
+    @Query("SELECT * FROM viagem WHERE id = :id_viagem")
+    fun findSpecific(id_viagem: Int) : Viagem
 }

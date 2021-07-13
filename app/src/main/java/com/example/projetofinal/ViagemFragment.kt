@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class ViagemFragment(id_user: Int) : Fragment() {
+class ViagemFragment() : Fragment() {
 
     lateinit var etDestinoViagem : EditText
     lateinit var etDtChegadaViagem : EditText
@@ -33,7 +33,7 @@ class ViagemFragment(id_user: Int) : Fragment() {
     lateinit var rbNegocios : RadioButton
     lateinit var rgOptions : RadioGroup
     lateinit var radioValue : String
-    var id_user : Int = id_user
+    var user_id: Int = 0
     lateinit var viagemDAO: ViagemDAO
     lateinit var viagemAdapter: ViagemAdapter
     lateinit var btCadastraViagem : Button
@@ -42,6 +42,8 @@ class ViagemFragment(id_user: Int) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        user_id = arguments?.getInt("user")!!
+        Log.i("Viagem Args:", "${user_id}")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_viagem, container, false)
     }
@@ -79,7 +81,7 @@ class ViagemFragment(id_user: Int) : Fragment() {
                 etDtChegadaViagem.text.toString(),
                 etDtPartidaViagem.text.toString(),
                 etOrcamenteViagem.text.toString().toDouble(),
-                id_user
+                user_id
         )
 
         GlobalScope.launch(Dispatchers.Main){
